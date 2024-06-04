@@ -81,16 +81,19 @@ def find(pattern, path):
 
 
 
-input_dir = "//data.diamond.ac.uk/i13-1/data/2023/mg32723-1/raw/"
+input_dir = "D:/dls/MG32723-1_TonyKirk/raw/"
 
-test = find('pco1-*', input_dir)
-print(test)
+#test = find('pco1-*', input_dir)
+#print(test)
+test_file = input_dir + "376023.nxs"
+
 
 #input_dir = 'C:/Users/pauld/CAFS-DLS-Analysis/I13/'
 # Test_scan_Ni = 376112 -> 376142
 # Test_scan_Ni_3 = 376143 -> 376153
 fnum1 = 376175
 fnum2 = 376176
+
 #file_nums = np.arange(fnum1, fnum2+1, 2, dtype=int)
 
 frames_pre_energy=10
@@ -100,25 +103,23 @@ Kedge = 8770
 #energy_steps = np.arange(energy_step_array[0][0], energy_step_array[0][1] + energy_step_array[0][2], energy_step_array[0][2], dtype=float)
 i = 0
 I = []
-for files in test[-30:-1]:
+#for files in test[-30:-1]:
     #filename = 'pco1-' + str(fnum) + '.hdf'
     #FULL_FILE = input_dir + filename
-    f = read_HDF(files) 
+f = read_HDF(test_file) 
 
-    DF = f[0,0:500,0:500]
-    DF_mean = np.mean(DF)
-    print(DF_mean)
+DF = f[0,0:500,0:500]
+DF_mean = np.mean(DF)
+print(DF_mean)
 
-    c1 = f[0,:,:] - DF_mean
-    c1[c1<0] = 0
-    c2 = f[1,:,:] - DF_mean
-    c2[c2<0] = 0
-    c3 = f[2,:,:] - DF_mean
-    c3[c3<0] = 0
-    c_all = np.sum((c1 + c2 + c3)/3)
-    print(c_all)
-    I.append(c_all)
-print(I)
+c1 = f[0,:,:] - DF_mean
+c1[c1<0] = 0
+c2 = f[1,:,:] - DF_mean
+c2[c2<0] = 0
+c3 = f[2,:,:] - DF_mean
+c3[c3<0] = 0
+c_all = np.sum((c1 + c2 + c3)/3)
+print(c_all)
 
 #fig, ax = plt.subplots()
 #c = ax.pcolormesh(c_all, cmap='rainbow')
@@ -127,7 +128,7 @@ print(I)
 
 
 plt.figure()
-plt.plot(I)
+plt.imshow(c1)
 plt.show()
 
 DFs = []
