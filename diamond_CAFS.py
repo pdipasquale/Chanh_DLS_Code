@@ -18,7 +18,7 @@ import json
 from scipy import interpolate
 import matplotlib.colors as colors
 import pystyle
-from pystyle import Colors, Colorate
+#from pystyle import Colors, Colorate
 
 
 def read_HDF(filename):
@@ -81,23 +81,23 @@ def find(pattern, path):
 
 
 
-input_dir = "D:/dls/MG32723-1_TonyKirk/raw/"
+input_dir = "data/"
 
 #test = find('pco1-*', input_dir)
 #print(test)
-test_file = input_dir + "376023.nxs"
+test_file = input_dir + "387780.nxs"
 
 
 #input_dir = 'C:/Users/pauld/CAFS-DLS-Analysis/I13/'
 # Test_scan_Ni = 376112 -> 376142
 # Test_scan_Ni_3 = 376143 -> 376153
-fnum1 = 376175
-fnum2 = 376176
+#fnum1 = 376175
+#fnum2 = 376176
 
 #file_nums = np.arange(fnum1, fnum2+1, 2, dtype=int)
 
-frames_pre_energy=10
-Kedge = 8770
+#frames_pre_energy=10
+#Kedge = 8770
 #energy_step_array = [(-50, -10, 1)]
 #print(energy_step_array[0][0])
 #energy_steps = np.arange(energy_step_array[0][0], energy_step_array[0][1] + energy_step_array[0][2], energy_step_array[0][2], dtype=float)
